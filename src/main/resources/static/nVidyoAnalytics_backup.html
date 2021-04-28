@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title> nVidyo Analytics Chart </title>
+  <link type="text/css" rel="stylesheet" href="js/bootstrap.css">
+  <link type="text/css" rel="stylesheet" href="js/bootstrap-datepicker.min.css">
+  <link rel="stylesheet" type="text/css" href="js/jquery.dataTables.css">
+  <link rel="stylesheet" type="text/css" href="NPV/analytics.css">
+</head>
+<body>
+	<div class="container">
+    <div class="row">
+        <div class='col-sm-2'>
+            <div class="form-group">
+            	<label>Select Start Date:</label>
+                <div class='input-group date' id='startdatepicker'>
+                    <input type='text' class="form-control" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+             </div>
+       	</div>
+       	<div class='col-sm-2'>
+                <label>Select End Date:</label>
+                <div class='input-group date' id='enddatepicker'>
+                    <input type='text' class="form-control" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+               </div>
+               </div>
+               <div class='col-sm-2'>
+            	<label> Campaign Name:</label><select id ="campaignName">
+			  		<option value="">Select Campaign</option>
+			  		</select>
+            </div>
+            <!-- div class='col-sm-2'>
+            	<label> Chart Category:</label><select id ="categoryName">
+				  		<option value="">Select Category</option>
+				  		<option value="eventBrowser">Browser</option>
+				  		<option value="eventCity">city</option>
+				  		<option value="eventCountry">Country</option>
+				  		<option value="eventDate">Date</option>
+				  		<option value="hour(eventDateTime)">Date Hour</option>
+				  		<option value="eventOperatingSystem">Operating System</option>
+			  		</select>
+            </div>-->
+        	<div class='col-sm-2'><br>
+            	<button type="button" id="viewChart" class="btn btn-primary input-sm" style="margin-left: 35px">Show Chart</button>
+	              <!-- button type ="button" id = "exportBtn_uniqueVideos" class="btn btn-primary input-sm" style="margin-left: 120px;margin-top: -55px;">Export Unique Videos Report
+	   			  <span class="glyphicon glyphicon-export"></span></button>
+	 			  <button type ="button" id = "exportBtn_allVideos" class="btn btn-primary input-sm" style="margin-left: 365px;margin-top: -92px;">Export All Videos Report
+	 			  <span class="glyphicon glyphicon-export"></span></button>
+	 			  <button type ="button" id = "exportBtn_allEvents" class="btn btn-primary input-sm" style="margin-left: 265px;margin-top: -50px;">Export All Events Report
+	 			  <span class="glyphicon glyphicon-export"></span></button-->
+	 			  <div class="dropdown">
+					<button type="button" class="btn btn-primary input-sm dropdown-toggle" data-toggle="dropdown" id="btnReport" style="margin-left: 160px;margin-top: -55px">Export Report
+					<span class="glyphicon glyphicon-export"></span></button>
+						<ul class= "dropdown-menu">
+							<li><a href ="#" id = "exportBtn_uniqueVideos">Unique Videos</a></li>
+							<li><a href ="#" id = "exportBtn_allVideos">All Videos</a></li>
+							<li><a href ="#" id = "exportBtn_allEvents">All Events</a></li>
+							<li><a href ="#" id = "exportBtn_videosNotViewed">Videos Not viewed</a></li>
+						
+						</ul>
+				</div>
+				<div style="margin-left: 325px;margin-top: -50px;width: 150px;">
+				<label id = "videoCountbtn" ></label>
+	 			</div>
+				
+				
+				<!-- <div style="margin-left: 275px;margin-top: -50px;width: 150px;">
+				<a href="#" id = "videoCountbtn" onclick="">get Video Count</a>
+	 			</div>
+	 			<div class="modal fade modalVideo" id="modalVideoCount" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          			<div class="modal-dialog modal-sm">
+            			<div id="assetVideoCountContentModel" class="modal-content">
+                			<div class="modal-header">
+                			   	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                				<div id ="modelVideoCountShow"></div>
+                			</div>
+						</div>
+					</div>
+				</div> -->
+				<!--  div style="margin-left: 535px;margin-top: -15px;width: 150px;"-->
+				<div style="margin-left: 535px;margin-top: -15px;width: 150px;">
+				<a href="#" id = "logOutbtn" onclick="doLogout()">Log Out<span class="glyphicon glyphicon-off"></span></a>
+	 			</div>
+			</div>
+     </div>
+   </div>
+   <div class="row">
+	   	<div class='col-sm-4'>
+		   	<div id ="div_date" style="border:1px solid grey;display:none">
+		   		<button type ="button" id = "exportBtn_date" class="btn btn-primary input-sm" style="margin-left: 300px;margin-top: 10px;">Export
+		   		<span class="glyphicon glyphicon-export"></span></button>
+		   		<div id ="chartContainer_date"></div>
+		  	</div>
+	   </div>
+	   <div class='col-sm-4'>
+	   		<div id ="div_country" style="border:1px solid grey;display:none">
+		   		<button type ="button" id = "exportBtn_country" class="btn btn-primary input-sm" style="margin-left: 300px; margin-top: 10px;">Export
+		   		<span class="glyphicon glyphicon-export"></span></button>
+		   		<div id ="chartContainer_country"></div>
+	   		</div>
+   		</div>
+   		<div class='col-sm-4'>
+	   		<div id ="div_city" style="border:1px solid grey;display:none">
+		   		<button type ="button" id = "exportBtn_city" class="btn btn-primary input-sm" style="margin-left: 300px; margin-top: 10px;">Export
+		   		<span class="glyphicon glyphicon-export"></span></button>
+		   		<div id ="chartContainer_city"></div>
+	   		</div>
+   		</div>
+   		
+   </div><br><br>
+   <div class="row">
+	   <div class='col-sm-4'>
+	   			<div id ="div_dateHour" style="border:1px solid grey;display:none">
+			   		<button type ="button" id = "exportBtn_dateHour" class="btn btn-primary input-sm" style="margin-left: 300px; margin-top: 10px;">Export
+			   		<span class="glyphicon glyphicon-export"></span></button>
+			   		<div id ="chartContainer_dateHour"></div>
+	   			</div>
+	   		</div>		
+   		<div class='col-sm-4'>
+   			<div id ="div_browser" style="border:1px solid grey;display:none">
+		   		<button type ="button" id = "exportBtn_browser" class="btn btn-primary input-sm" style="margin-left: 300px; margin-top: 10px;">Export
+		   		<span class="glyphicon glyphicon-export"></span></button>
+	   			<div id ="chartContainer_browser"></div>
+  			</div>
+   		</div>
+   		<div class='col-sm-4'>
+   			<div id ="div_os" style="border:1px solid grey;display:none">
+		   		<button type ="button" id = "exportBtn_os" class="btn btn-primary input-sm" style="margin-left: 300px; margin-top: 10px;">Export
+		   		<span class="glyphicon glyphicon-export"></span></button>
+	   			<div id ="chartContainer_os"></div>
+   			</div>
+   		</div>
+   	</div><br><br>
+   	<div class ="row">	
+	   		<div id ="eventDiv" class = 'col-sm-8'>
+		   		<table id="tblEventsTrack" style="display:none">
+		        	<thead>
+		            	<tr>
+			                <th>Event Action</th>
+			                <th>Count</th> 
+		               	</tr>
+	        		</thead>
+    			</table>
+	   		</div>
+   		
+   </div>
+	<script src="js/jquery.min.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap-datepicker.min.js"></script>
+    <script src="js/nVidyoAnalytics.js"></script>
+    <script src="js/jquery.dataTables.js"></script>
+    <script type="text/javascript " src="https://www.gstatic.com/charts/loader.js"></script>
+</body>
+</html>

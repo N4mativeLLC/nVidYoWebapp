@@ -1,0 +1,78 @@
+/* your styles go here */
+
+.header-image {
+    width: 180px;
+    height: 60px;
+}
+.dataTables_scroll{
+	width:700px;
+}
+
+ thead{
+	color:white;
+}
+.dataTables_wrapper {
+    font-family: tahoma;
+    font-size: 12px;
+    font-weight:bold;
+}
+.hide{
+	display:none;
+}
+#realTimeChart{
+	width: 325px;
+    height: 230px;
+    margin-top: -40px;
+    margin-left: -20px;
+}
+
+#predictionChart{
+    width: 325px;
+    height: 270px;
+}
+
+.assetValColor{
+	color:red;
+} 
+
+#assetValContentModel{
+    border: 2px solid ;
+    width: 300px;
+  	top: 250px;
+   	right: 100px;
+  	bottom: 0;
+   	left: 0;
+   	z-index: 10040;
+   	overflow: auto;
+   	overflow-y: auto;
+} 
+ 
+#timeLineModel{
+	border: 2px solid ;
+   
+  	top: 250px;
+}
+.nav-items >li {
+    width: 13%;
+}
+
+.export-btn{
+	float:right;
+	margin:50px;
+}
+
+.time-selector-section .label-txt {
+    border-bottom: solid 1px #ddd;
+    //color: #00ccff;
+}
+
+.time-selector-section > div {
+    padding: 10px;
+}
+.time-selector-section{
+	width:800px;
+}
+
+#assetMapView{
+	float:right;
+}

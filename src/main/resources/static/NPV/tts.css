@@ -1,0 +1,29 @@
+#txtDiv {
+    margin: auto;
+    width: 50%;
+    border: 1px solid blue;
+    padding: 10px;
+    margin-top: 50px;
+}
+textarea{
+  width:80%;
+  background-color:#eee;
+  overflow:hidden;
+  height:250px;
+  max-height:250px;
+  border:1px solid #ccc;
+  overflow-y: auto;
+}
+
+.mybtn{
+	height: 30px;
+    width: 90px;
+    color: white;
+    background-color: blue;
+}
+
+.right{
+	width: 20%;
+    margin-top: -200px;
+    margin-left: 10px;
+}
